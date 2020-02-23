@@ -11,7 +11,23 @@
 
 ## 数据提取
 
-- WikiExtractor工具
+- WikiExtractor工具   <https://github.com/attardi/wikiextractor>
+
+  ~~~
+  WikiExtractor.py [-h] [-o OUTPUT] [-b n[KMG]] [-c] [--json] [--html]
+                          [-l] [-s] [--lists] [-ns ns1,ns2]
+                          [--templates TEMPLATES] [--no-templates] [-r]
+                          [--min_text_length MIN_TEXT_LENGTH]
+                          [--filter_category path_of_categories_file]
+                          [--filter_disambig_pages] [-it abbr,b,big]
+                          [-de gallery,timeline,noinclude] [--keep_tables]
+                          [--processes PROCESSES] [-q] [--debug] [-a] [-v]
+                          [--log_file]
+                          input
+  eg:                  
+  WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/project1/data/zhwiki-20191120-pages-articles-multistream.xml.bz2
+  ~~~
+
 - 数据处理（文本处理操作）
 
 ## 词向量
