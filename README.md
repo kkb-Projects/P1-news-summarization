@@ -112,5 +112,5 @@ matplotlib.rcParams['font.size'] = 10
 
 **参考网址：**<https://github.com/matplotlib/matplotlib/issues/15062>
 
-![image-20200229183757955](../yaolinxia.github.io/img/image-20200229183757955.png)
+<img src="img/image-20200229183757955.png" alt="image-20200229183757955" style="zoom:50%;" />
 
