@@ -62,6 +62,9 @@ WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/
 ## 句向量
 
 - 句向量
+
+  <https://www.cnblogs.com/llhthinker/p/10335164.html>
+
 - 权重计算
 
 # 2 核心模型搭建
@@ -82,6 +85,11 @@ WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/
 
 数据预处理+训练词向量：严鹏 + 姚林霞
 
+# **5 参考资料**
+
+## KNN平滑
+
+- <http://www.feingto.com/?p=27534>
 
 
 
