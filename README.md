@@ -28,13 +28,24 @@ eg:
 WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/project1/data/zhwiki-20191120-pages-articles-multistream.xml.bz2
 ~~~
 
-### 数据处理
-
 - 文本过滤特殊字符，空格等
 
 - 结巴分词，并进行文本保存
 
+## 维基百科数据处理
 
+- 数据量
+
+~~~
+total_nums 5570027
+len+files [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 27, 100, 100, 100]
+~~~
+
+<img src="../yaolinxia.github.io/img/image-20200309214519838.png" alt="image-20200309214519838" style="zoom:50%;" />
+
+- 输出结果：
+
+  分词后的结果，维基百科的词频
 
 ## 词向量
 
@@ -59,11 +70,15 @@ WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/
      
 
 
-## 句向量
+## SIF句向量
 
 - 句向量
 
   <https://www.cnblogs.com/llhthinker/p/10335164.html>
+
+  <https://blog.csdn.net/sinat_31188625/article/details/72677088>
+
+  
 
 - 权重计算
 
@@ -91,7 +106,28 @@ WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/
 
 - <http://www.feingto.com/?p=27534>
 
+## 字典存储为pkl格式
 
+- <https://blog.csdn.net/yangtf07/article/details/81571371>
+- <https://blog.csdn.net/qq_41621362/article/details/94452160>
+
+~~~python
+# 存储到pkl文件
+def pkl_out(dict_data, pkl_out):
+    with open(pkl_out, 'wb') as fo:     # 将数据写入pkl文件
+        pickle.dump(dict_data, fo)
+~~~
+
+## 词频计算
+
+~~~python
+Counter()                           # a new, empty counter
+c = Counter('gallahad')                 # a new counter from an iterable
+c = Counter({'red': 4, 'blue': 2})      # a new counter from a mapping
+c = Counter(cats=4, dogs=8)
+~~~
+
+- <https://blog.csdn.net/The_lastest/article/details/81027387>
 
 
 # questions
