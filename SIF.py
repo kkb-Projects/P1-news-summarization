@@ -37,5 +37,5 @@ def SIF_sentence_embedding(sen, alpha=1e-4):
 
 
 if __name__ == '__main__':
-    text = "完成词频字典载入"
+    text = "鹅额额额！"
     SIF_sentence_embedding(text)
