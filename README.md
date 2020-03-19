@@ -30,6 +30,7 @@
 - text_abstract.py: 余弦相似度进行摘要提取
 - vector_view.py:  词向量可视化
 - show.ppt: 项目效果展示图
+- 参数.txt: 模型调参记录表
 
 # **4 相关操作说明**
 
