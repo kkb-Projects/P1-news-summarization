@@ -1,17 +1,43 @@
-# **新闻数据自动摘要**
-
-- [x] 项目完成：2020年3月15日
-- [x] 数据处理：2020年2月15日-2月22日
-- [ ] 模型搭建：2020年2月23日-2月29日
-  - [ ] 模型优化：2020年3月1日-3月15日
-- [ ] 模型可视化：2020年3月1日-3月15日
+[TOC]
 
 
-# 1 数据预处理
 
-## 数据提取
+# **1 项目简介**
 
-### WikiExtractor工具   <https://github.com/attardi/wikiextractor>
+- 新闻文本摘要自动生成
+
+# **2 环境依赖**
+
+- Python3.6
+- Flask1.1.1
+- Jieba
+- 其他：bootstrap、js、ajax、
+
+# **3 目录结构描述**
+
+<img src="img/image-20200319090124768.png" alt="image-20200319090124768" style="zoom:50%;" />
+
+- data: 存放模型数据，维基百科词典
+- img: 项目相关图片截图
+- static: 存放css和js文件
+- template: 存放index.html
+- app.py: 服务器端启动入口
+- extract_news.py: 新闻数据各部分内容提取
+- gensim_test.py: 训练词向量
+- process_news.py: 处理新闻语料数据
+- process_wiki.py: 处理维基百科数据
+- SIF.py: 生成句向量
+- text_abstract.py: 余弦相似度进行摘要提取
+- vector_view.py:  词向量可视化
+- show.ppt: 项目效果展示图
+
+# **4 相关操作说明**
+
+## 4.1 维基百科数据处理
+
+### WikiExtractor工具  
+
+- <https://github.com/attardi/wikiextractor>
 
 ~~~
 WikiExtractor.py [-h] [-o OUTPUT] [-b n[KMG]] [-c] [--json] [--html]
@@ -28,12 +54,6 @@ eg:
 WikiExtractor.py -o wiki_articles.txt /Users/stone/PycharmProjects/kkb_projects/project1/data/zhwiki-20191120-pages-articles-multistream.xml.bz2
 ~~~
 
-- 文本过滤特殊字符，空格等
-
-- 结巴分词，并进行文本保存
-
-## 维基百科数据处理
-
 - 数据量
 
 ~~~
@@ -41,23 +61,31 @@ total_nums 5570027
 len+files [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 27, 100, 100, 100]
 ~~~
 
-<img src="img/image-20200309214519838.png" alt="image-20200309214519838" style="zoom:50%;" />
-
 - 输出结果：
 
   分词后的结果，维基百科的词频
+  
+  <img src="img/image-20200309214519838.png" alt="image-20200309214519838" style="zoom:50%;" />
 
-## 词向量
+## 4.2 词向量
 
-### 词向量构建
+### 4.2.1 词向量构建
 
+- 文本过滤特殊字符，空格等
+- 结巴分词，并进行文本保存
+- 使用gensim
 
+~~~python 
+model = word2vec.Word2Vec(PathLineSentences(inputpath),
+                              size=100, window=5, min_count=2, workers=10)
+model.save(outpath)
+~~~
 
-### 测试词向量效果
+### 4.2.2 测试词向量效果
 
+<img src="img/image-20200319091509111.png" alt="image-20200319091509111" style="zoom:50%;" />
 
-
-### 词向量可视化
+### 4.2.3 词向量可视化
 
 - 可视化词向量-TSNE	使用
 
@@ -67,10 +95,10 @@ len+files [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 27, 100, 100, 100]
 
   2. <https://www.kaggle.com/jeffd23/visualizing-word-vectors-with-t-sne>
 
-     
+<img src="img/image-20200319091321502.png" alt="image-20200319091321502" style="zoom:50%;" />
 
 
-## SIF句向量
+## 4.3 SIF句向量
 
 - 句向量
 
@@ -82,37 +110,39 @@ len+files [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 27, 100, 100, 100]
 
 - 权重计算
 
-# 2 核心模型搭建
+  
+
+## 4.3 核心模型搭建
 
 - 相似度模型
 
   <https://www.zhihu.com/question/29978268>
 
-  
-
 - KNN平滑
 
-- 模型调优
+- 参数调节
 
-# 3 可视化
+## 4.4 可视化
 
 - flask, bottle, bootstrap
 
-# 4 分工
+# **5 运行流程**
 
-可视化：张兆康 + 严鹏协助
+- 运行app.py文件，进入http://127.0.0.1:5000/，进入主目录
 
-模型：俞谷阳 + 姚林霞协助
+![image-20200319000335839](img/image-20200319000335839.png)
 
-数据预处理+训练词向量：严鹏 + 姚林霞
+- 进入主目录，输入新闻标题，新闻正文，点击摘要生成按键
 
-# **5 参考资料**
+![image-20200319000747976](img/image-20200319000747976.png)
 
-## KNN平滑
+# **6 参考资料**
+
+## 6.1 KNN平滑
 
 - <http://www.feingto.com/?p=27534>
 
-## 字典存储为pkl格式
+## 6.2 字典存储为pkl格式
 
 - <https://blog.csdn.net/yangtf07/article/details/81571371>
 - <https://blog.csdn.net/qq_41621362/article/details/94452160>
@@ -124,7 +154,7 @@ def pkl_out(dict_data, pkl_out):
         pickle.dump(dict_data, fo)
 ~~~
 
-## 词频计算
+## 6.3 词频计算
 
 ~~~python
 Counter()                           # a new, empty counter
@@ -135,10 +165,13 @@ c = Counter(cats=4, dogs=8)
 
 - <https://blog.csdn.net/The_lastest/article/details/81027387>
 
+## 6.4 前端页面
 
-# questions
+- <https://github.com/stem-nlp/text-summarization.git>
 
-## matplotlib中文显示
+# 7 questions
+
+## 7.1 matplotlib中文显示
 
 尝试了网上四种方法，分别如下：
 
