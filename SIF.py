@@ -1,4 +1,7 @@
 # -*- coding:utf8 -*-
+# author:yaolinxia
+# datetime:2020/3/11
+# software: PyCharm
 from gensim.models import KeyedVectors, word2vec
 
 import pickle as pkl
@@ -32,7 +35,7 @@ def SIF_sentence_embedding(sen, alpha=1e-4):
 
     sen_vec /= len(words)
     # skip SVD
-    print(sen_vec)
+    # print(sen_vec)
     return sen_vec
 
 
