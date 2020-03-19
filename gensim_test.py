@@ -3,13 +3,11 @@ from gensim.models.word2vec import PathLineSentences
 
 import pandas as pd
 pd.options.mode.chained_assignment = None
-import numpy as np
-import re
-import nltk
 import random
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 
+# 词向量可视化
 def tsne_plot(model):
     "Creates and TSNE model and plots it"
     labels = []
@@ -20,10 +18,6 @@ def tsne_plot(model):
     for word in words:
         tokens.append(model[word])
         labels.append(word)
-
-    # for word in model.wv.vocab:
-    #     tokens.append(model[word])
-    #     labels.append(word)
 
     tsne_model = TSNE(perplexity=40, n_components=2, init='pca', n_iter=2500, random_state=23)
     new_values = tsne_model.fit_transform(tokens)
@@ -44,8 +38,6 @@ def tsne_plot(model):
                      ha='right',
                      va='bottom')
     plt.show()
-# sentences = LineSentence(datapath('lee_background.cor'))
-# print(sentences)
 
 # 1. 训练词向量
 def trainVector(inputpath="news_articles_cut.txt", outpath="word2vec_news2.model" ):
@@ -63,7 +55,7 @@ def testVector(vector_model="word2vec_news2.model"):
     print("美女\n", res)
     print(vec_model["勇敢"])
 
-# 测试词向量
+# 3. 测试词向量
 def analogy(x1, x2, y1, vector_model="word2vec_news2.model"):
     vec_model = word2vec.Word2Vec.load(vector_model)
     result = vec_model.most_similar(positive=[y1, x2], negative=[x1])
