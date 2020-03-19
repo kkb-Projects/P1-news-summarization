@@ -1,3 +1,7 @@
+# -*- coding:utf8 -*-
+# author:yaolinxia
+# datetime:2020/3/11
+# software: PyCharm
 import re
 import jieba
 import os
